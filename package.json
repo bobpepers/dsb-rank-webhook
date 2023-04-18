@@ -1,0 +1,58 @@
+{
+  "name": "dsb-webhook.js",
+  "version": "0.0.0",
+  "description": "webhook decryption for dsb-rank",
+  "main": "./dist/index.mjs",
+  "scripts": {
+    "dev": "nodemon --experimental-specifier-resolution=node --exec babel-node --max-old-space-size=8192 src/index.mjs",
+    "start": "NODE_ENV=production node --experimental-specifier-resolution=node dist/index.mjs",
+    "build": "rm -rf dist && babel src --out-dir dist --copy-files --keep-file-extension && git add .",
+    "lint": "eslint src",
+    "standard-version": "standard-version --commit-all",
+    "pre-release:minor": "standard-version --commit-all --release-as minor",
+    "pre-release:patch": "standard-version --commit-all --release-as patch",
+    "pre-release:major": "standard-version --commit-all --release-as major",
+    "release": "npm-run-all build standard-version",
+    "release:patch": "npm-run-all build pre-release:patch",
+    "release:minor": "npm-run-all build pre-release:minor",
+    "release:major": "npm-run-all build pre-release:major"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobpepers/dsb-webhook.js.git"
+  },
+  "keywords": [
+    "discord",
+    "server",
+    "ranking",
+    "top",
+    "dsb-rank"
+  ],
+  "author": "Bago",
+  "bugs": {
+    "url": "https://github.com/bobpepers/dsb-webhook.js/issues"
+  },
+  "homepage": "https://github.com/bobpepers/dsb-webhook.js#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/eslint-parser": "^7.21.3",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-proposal-async-generator-functions": "^7.20.7",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-security": "^1.7.1",
+    "nodemon": "^2.0.22",
+    "npm-run-all": "^4.1.5",
+    "standard-version": "^9.5.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
